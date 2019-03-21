@@ -7,5 +7,7 @@ class DS():
     self.source_file = source_file
     self.dest_file = dest_file
     
-  def open(self):
-    pass
+  def analyse(self):
+    wb = xlrd.open_workbook(self.source_file)
+    for sh in wb.sheets:
+      print(sh)
