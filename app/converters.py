@@ -6,7 +6,6 @@ class DS():
 
   def __init__(self, source_file, dest_file=None, sheet=None, header=None, options=None):
     if not os.path.exists(source_file):
-      raise 1, 'File does not exist'
       return None
       
     self.source_file = source_file
