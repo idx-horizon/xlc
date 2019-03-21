@@ -1,13 +1,24 @@
 import csv
 import xlrd
+import os
 
 class DS():
 
   def __init__(self, source_file, dest_file=None, sheet=None, header=None, options=None):
+    if not os.path.exists(source_file):
+      return 1
+      
     self.source_file = source_file
     self.dest_file = dest_file
+    self.sheet = sheet
+    self.header = header
+    self.options = options
     
-  def analyse(self):
+  def analyse(self,sheets=None):
     wb = xlrd.open_workbook(self.source_file)
     for sh in wb.sheets():
-      print('Sheet: {} Rows: {} Cols: {}'.format(sh.name,sh.ncols, sh.nrows))
+      print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
+      
+  def convert(self):
+    print('Not yet implemented')
+    
