@@ -9,5 +9,5 @@ class DS():
     
   def analyse(self):
     wb = xlrd.open_workbook(self.source_file)
-    for sh in wb.sheets:
-      print(sh)
+    for sh in wb.sheets():
+      print(Sheet: {} Rows: {} Cols: {}'.format(sh.name,sh.ncols, sh.nrows)
