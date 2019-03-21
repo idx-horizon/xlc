@@ -5,4 +5,4 @@ if __name__ == '__main__':
     if w:
         w.analyse()
     else:
-        print('** Unable to instantiate object')  
+        print('** Error: Unable to instantiate object')  
