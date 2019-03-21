@@ -5,5 +5,5 @@ if __name__ == '__main__':
     
     if w is not None: 
         w.analyse()
-    else 
+    else:
         print('** Error: Unable to instantiate object')  
