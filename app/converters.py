@@ -2,7 +2,7 @@ import csv
 import xlrd
 import os
 
-class DS(object):
+class DSFile(object):
 
   def __init__(self, source_file, dest_file=None, sheet=None, header=None, options=None):
     if not os.path.exists(source_file):
