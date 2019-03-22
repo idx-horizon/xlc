@@ -24,7 +24,8 @@ class DSFile(object):
     
   def analyse(self,sheets=None):
     wb = xlrd.open_workbook(self.source_file)
-    print('Source: {}, #sheets'.format(self.basename, sh.nsheets), 
+    print('Source: {}, #sheets'.format(self.basename, sh.nsheets))
+     
     for sh in wb.sheets():
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
