@@ -4,7 +4,13 @@ import os
 
 class DSFile(object):
 
-  def __init__(self, source_file, dest_file=None, sheet=None, header=None, options=None):
+  def __init__(self, 
+  source_file, 
+  dest_file=None, 
+  sheet=None, 
+  header=None, 
+  options=None):
+  
     if not os.path.exists(source_file):
       print('** File does not exist {}'.format(source_file))
       return None
