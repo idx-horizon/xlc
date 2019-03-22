@@ -40,7 +40,7 @@ class DSFile(object):
       for r in sh.get_rows():
         output_row = []  
         for c in r:
-          output_row.append c.value
+          output_row.append( c.value)
         
         dw.writerow(output_row)
       
