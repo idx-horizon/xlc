@@ -27,13 +27,13 @@ class DSFile(object):
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
   def convert(self, dest_file=None, sheet=0, header=0):
-    out_file = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
+    outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     wb = self.open()
     sh = wb.sheet_by_index(sheet)
     col_headers = ['Col1', 'Col2', 'Col3']
     
-    with open(out_file,'w') as fh_out:
+    with open(outfile,'w') as fh_out:
       dw = csv.DictWriter(fh_out, 
                           fieldnames=col_headers, 
                           lineterminator='\n',
