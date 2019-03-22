@@ -27,7 +27,7 @@ class DSFile(object):
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
   def convert(self, dest_file=None, sheet=0, header=0):
-    outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
+    out_file = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     wb = self.open()
     sh = wb.sheet_by_index(sheet)
