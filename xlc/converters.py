@@ -34,7 +34,10 @@ class DSFile(object):
     col_headers = ['Col1', 'Col2', 'Col3']
     
     with open(out_file,'w') as fh_out:
-      dw = csv.DictWriter(fh_out, fieldnames=col_headers, lineterminator='\n')
+      dw = csv.DictWriter(fh_out, 
+                          fieldnames=col_headers, 
+                          lineterminator='\n',
+                          quoting=csv.QUOTE_ALL)
       dw.writeheader()
       
       for r in sh.get_rows():
@@ -44,5 +47,5 @@ class DSFile(object):
         
         dw.writerow(output_row)
       
-    print('Not yet implemented')
+    print('Output to {}'.format(outfile))
     
