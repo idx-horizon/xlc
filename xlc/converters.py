@@ -16,7 +16,7 @@ class DSFile(object):
     self.basename = os.path.basename(source_file)
     self.options = options
     
-  def open():
+  def open(self):
     return xlrd.open_workbook(self.source_file)
     
   def analyse(self,sheets=None):
