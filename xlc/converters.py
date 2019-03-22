@@ -17,8 +17,8 @@ class DSFile(object):
       
     self.source_file = source_file
     self.basename = os.path.basename(source_file)
-    self.dest_file = dest_file
-    self.sheet = sheet
+    self.dest_file = dest_file or source_file + '_converted.csv'
+    self.sheet = sheet or 0
     self.header = header
     self.options = options
     
@@ -30,7 +30,7 @@ class DSFile(object):
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
   def convert(self):
-    with open(dest_file,'w') as fh_out:
+    with open(self.dest_file,'w') as fh_out:
       dw = csv.DictWriter(fh_out, fieldnames=['A','B'], lineterminator='\n')
       dw.writeheader()
       dw.writerow({'A': 1, 'B': 'Not yet implemented'})
