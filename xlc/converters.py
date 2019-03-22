@@ -40,7 +40,7 @@ class DSFile(object):
       for r in sh.get_rows():
         output_row = {}
         for ix, c in enumerate(r):
-          output_row['Col'+str(ix)] = c.value
+          output_row['Col'+str(ix+1)] = c.value
         
         dw.writerow(output_row)
       
