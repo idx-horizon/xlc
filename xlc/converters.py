@@ -31,13 +31,18 @@ class DSFile(object):
     
     wb = self.open()
     sh = wb.sheet_by_index(sheet)
-    col_headers = sh.row(1)
+    col_headers = ['ColA', 'ColB', 'ColC']
     
     with open(out_file,'w') as fh_out:
       dw = csv.DictWriter(fh_out, fieldnames=col_headers, lineterminator='\n')
       dw.writeheader()
+      
       for r in sh.get_rows():
-        dw.writerow(r)
+        output_row = []  
+        for c in r:
+          output_row.append c.value
+        
+        dw.writerow(output_row)
       
     print('Not yet implemented')
     
