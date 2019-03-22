@@ -1,4 +1,4 @@
-from app.converters import DSFile as DS
+from xlc.converters import DSFile as DS
 #FN = 'testdata/TEST.xlsx'
 if __name__ == '__main__':
     w = DS('testdata/TEST.xlsx')
