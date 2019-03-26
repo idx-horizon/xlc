@@ -49,7 +49,7 @@ class DSFile(object):
                           quoting=csv.QUOTE_MINIMAL)
       dw.writeheader()
       
-      for r in sh.get_rows()[header:):
+      for r in sh.get_rows()[header:]:
         output_row = {}
         for ix, c in enumerate(r):
           output_row['Col'+str(ix+1)] = c.value
