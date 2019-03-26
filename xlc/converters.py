@@ -39,16 +39,17 @@ class DSFile(object):
       print('Unable to set sheet {}, Exception: {}'.format(sheet,e))
       return None
             
-    col_headers = ['Col1', 'Col2', 'Col3']
+    col_headers = []
+    for h in range(sh.ncol): col_headers.append('Col{}'.format(h))
     
     with open(outfile,'w') as fh_out:
       dw = csv.DictWriter(fh_out, 
                           fieldnames=col_headers, 
                           lineterminator='\n',
-                          quoting=csv.QUOTE_ALL)
+                          quoting=csv.QUOTE_MINIMAL)
       dw.writeheader()
       
-      for r in sh.get_rows():
+      for r in sh.get_rows()[header:):
         output_row = {}
         for ix, c in enumerate(r):
           output_row['Col'+str(ix+1)] = c.value
