@@ -26,17 +26,25 @@ class DSFile(object):
     for sh in wb.sheets():
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
-  def convert(self, dest_file=None, sheet=0, header=0, col_headers=None):
+  def validate(self):
+    pass
+        
+  def convert(self, dest_file=None, sheet=0, header=0, col_headers=None,overwrite=True):
     outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
+    if os.path.exists(outfile):
+      if overwrite == True:
+        print('WARNING: {} will be overwritten'.format(outfile)
+      else
+        print('ERROR: {} already exists'.format(outfile)\
+        return None
+        
+      
     wb = self.open()
     try:
-      if isinstance(sheet, int):
-        sh = wb.sheet_by_index(sheet)
-      else:
-        sh = wb.sheet_by_name(str(sheet))
+      sh = wb.sheet_by_index(sheet) if isinstance(sheet, int) else wb.sheet_by_name(str(sheet))
     except Exception as e:
-      print('Unable to set sheet {}, Exception: {}'.format(sheet,e))
+      print('** ERROR: Handling sheet {}, Exception: {}'.format(sheet,e))
       return None
             
     col_headers = []
@@ -56,7 +64,7 @@ class DSFile(object):
           
         output_row = {} 
         for ix, c in enumerate(row_data):
-            output_row['Col'+str(ix)] = c.value
+            output_row['Col{}'.format(ix)] = c.value
 
         dw.writerow(output_row)
       
