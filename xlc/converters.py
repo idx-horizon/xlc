@@ -40,7 +40,8 @@ class DSFile(object):
       return None
             
     col_headers = []
-    for h in range(sh.ncols): col_headers.append('Col{}'.format(h))
+    for h in range(sh.ncols): 
+      col_headers.append('Col{}'.format(h))
     
     with open(outfile,'w') as fh_out:
       dw = csv.DictWriter(fh_out, 
@@ -53,12 +54,13 @@ class DSFile(object):
         if row_num <= header:
           pass
           
-        output_row = {}
+        output_row = list(col_headers) #{}
         for ix, c in enumerate(row_data):
           try:
             output_row['Col'+str(ix+1)] = c.value
           except:
             print('Ignoring {} on element {} Row{}'.format(row_data,ix,row_num))
+        print(output_row)
         dw.writerow(output_row)
       
     print('Output to {}'.format(outfile))
