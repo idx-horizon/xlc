@@ -35,7 +35,7 @@ class DSFile(object):
     if os.path.exists(outfile):
       if overwrite == True:
         print('WARNING: {} will be overwritten'.format(outfile)
-      else
+      else:
         print('ERROR: {} already exists'.format(outfile)\
         return None
         
