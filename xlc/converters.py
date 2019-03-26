@@ -26,7 +26,7 @@ class DSFile(object):
     for sh in wb.sheets():
       print('Name: {} Rows: {} Cols: {}'.format(sh.name, sh.ncols, sh.nrows))
       
-  def convert(self, dest_file=None, sheet=0, header=0):
+  def convert(self, dest_file=None, sheet=0, header=0, col_headers=None):
     outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     wb = self.open()
@@ -54,13 +54,10 @@ class DSFile(object):
         if row_num <= header:
           pass
           
-        output_row = {} #col_headers #{}
+        output_row = {} 
         for ix, c in enumerate(row_data):
-          try:
             output_row['Col'+str(ix)] = c.value
-          except:
-            print('Ignoring {} on element {} Row{}'.format(row_data,ix,row_num))
-        print(output_row)
+
         dw.writerow(output_row)
       
     print('Output to {}'.format(outfile))
