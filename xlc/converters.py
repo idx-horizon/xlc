@@ -57,7 +57,7 @@ class DSFile(object):
         output_row = list(col_headers) #{}
         for ix, c in enumerate(row_data):
           try:
-            output_row['Col'+str(ix+1)] = c.value
+            output_row['Col'+str(ix)] = c.value
           except:
             print('Ignoring {} on element {} Row{}'.format(row_data,ix,row_num))
         print(output_row)
