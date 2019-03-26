@@ -54,7 +54,7 @@ class DSFile(object):
         if row_num <= header:
           pass
           
-        output_row = list(col_headers) #{}
+        output_row = {} #col_headers #{}
         for ix, c in enumerate(row_data):
           try:
             output_row['Col'+str(ix)] = c.value
