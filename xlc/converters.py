@@ -55,8 +55,10 @@ class DSFile(object):
           
         output_row = {}
         for ix, c in enumerate(row_data):
-          output_row['Col'+str(ix+1)] = c.value
-        
+          try:
+            output_row['Col'+str(ix+1)] = c.value
+          except:
+            print('Ignoring {} on element {} Row{}'.format(row_data,ix,row_num)
         dw.writerow(output_row)
       
     print('Output to {}'.format(outfile))
