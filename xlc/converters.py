@@ -30,7 +30,11 @@ class DSFile(object):
     outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     wb = self.open()
-    sh = wb.sheet_by_index(sheet)
+    if isinstance(sheet, int):
+      sh = wb.sheet_by_index(sheet)
+    else:
+      sh = wb.sheet_by_name(str(sheet))
+      
     col_headers = ['Col1', 'Col2', 'Col3']
     
     with open(outfile,'w') as fh_out:
