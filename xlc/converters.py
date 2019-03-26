@@ -40,7 +40,7 @@ class DSFile(object):
       return None
             
     col_headers = []
-    for h in range(sh.ncol): col_headers.append('Col{}'.format(h))
+    for h in range(sh.ncols): col_headers.append('Col{}'.format(h))
     
     with open(outfile,'w') as fh_out:
       dw = csv.DictWriter(fh_out, 
