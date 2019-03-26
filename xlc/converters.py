@@ -30,11 +30,15 @@ class DSFile(object):
     outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     wb = self.open()
-    if isinstance(sheet, int):
-      sh = wb.sheet_by_index(sheet)
-    else:
-      sh = wb.sheet_by_name(str(sheet))
-      
+    try:
+      if isinstance(sheet, int):
+        sh = wb.sheet_by_index(sheet)
+      else:
+        sh = wb.sheet_by_name(str(sheet))
+    except Exception as e:
+      print('Unable to set sheet {}, Exception: {}'.format(sheet,e))
+      return None
+            
     col_headers = ['Col1', 'Col2', 'Col3']
     
     with open(outfile,'w') as fh_out:
