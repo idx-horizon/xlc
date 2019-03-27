@@ -29,7 +29,13 @@ class DSFile(object):
   def validate(self):
     pass
         
-  def convert(self, dest_file=None, sheet=0, header=0, col_headers=None,overwrite=True):
+  def convert(self, 
+            dest_file=None, 
+            sheet=0, 
+            header=0, 
+            col_headers=None,
+            overwrite=True):
+            
     outfile = dest_file or self.source_file +'_sheet_' + str(sheet) + '.csv'
     
     if os.path.exists(outfile):
@@ -38,8 +44,7 @@ class DSFile(object):
       else:
         print('ERROR: {} already exists'.format(outfile))
         return None
-        
-      
+          
     wb = self.open()
     try:
       sh = wb.sheet_by_index(sheet) if isinstance(sheet, int) else wb.sheet_by_name(str(sheet))
